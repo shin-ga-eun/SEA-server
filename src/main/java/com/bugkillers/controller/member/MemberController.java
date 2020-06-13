@@ -1,20 +1,19 @@
-package com.bugkillers.controller.user;
+package com.bugkillers.controller.member;
 
-import com.bugkillers.domain.dto.LoginDto;
-import com.bugkillers.domain.dto.SignUpDto;
-import com.bugkillers.service.user.LoginService;
-import com.bugkillers.service.user.SignUpService;
-import lombok.RequiredArgsConstructor;
+import com.bugkillers.domain.dto.member.LoginDto;
+import com.bugkillers.domain.dto.member.SignUpDto;
+import com.bugkillers.service.member.LoginService;
+import com.bugkillers.service.member.SignUpService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/sea")
 
-public class UserController {
+public class MemberController {
     private final LoginService loginService;
     private final SignUpService signUpService;
 
-    public UserController(LoginService loginService, SignUpService signUpService) {
+    public MemberController(LoginService loginService, SignUpService signUpService) {
         this.loginService = loginService;
         this.signUpService = signUpService;
     }
