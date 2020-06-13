@@ -1,18 +1,6 @@
-package com.bugkillers.domain.entity;
+package com.bugkillers.domain.dto.member;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-public class User {
-
-    @Id
-    private long uid;
+public class SignUpDto {
     private String platform_type;
     private String access_token;
     private String email;
@@ -21,14 +9,6 @@ public class User {
     private String name;
     private String image;
     private String profile;
-
-    public long getUid() {
-        return uid;
-    }
-
-    public void setUid(long uid) {
-        this.uid = uid;
-    }
 
     public String getPlatform_type() {
         return platform_type;

@@ -1,4 +1,4 @@
-package com.bugkillers.domain.dto;
+package com.bugkillers.domain.dto.member;
 
 public class LoginDto {
     private String email;
