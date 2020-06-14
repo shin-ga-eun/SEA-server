@@ -16,7 +16,7 @@ public class SaveArtItemService {
         this.artItemRepository = artItemRepository;
     }
 
-    public void saveArtItem (SaveArtItemDto saveArtItemDto){
+    public void save (SaveArtItemDto saveArtItemDto){
         ArtItem artItem = new ArtItem();
         LocalDate localDate = LocalDate.now();
 

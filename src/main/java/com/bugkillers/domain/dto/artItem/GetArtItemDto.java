@@ -1,37 +1,14 @@
-package com.bugkillers.domain.entity;
+package com.bugkillers.domain.dto.artItem;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.time.LocalDate;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-public class ArtItem {
-
-    //대여관련 다뺐음
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long ano;
-    private String artist; //조인해야혀
+public class GetArtItemDto {
+    private String artist;
     private String title;
     private String description;
     private int price;
     private LocalDate create_at;
     private LocalDate modify_at;
-
-    public Long getAno() {
-        return ano;
-    }
-
-    public void setAno(Long ano) {
-        this.ano = ano;
-    }
 
     public String getArtist() {
         return artist;
@@ -57,6 +34,14 @@ public class ArtItem {
         this.description = description;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public LocalDate getCreate_at() {
         return create_at;
     }
@@ -71,13 +56,5 @@ public class ArtItem {
 
     public void setModify_at(LocalDate modify_at) {
         this.modify_at = modify_at;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 }
