@@ -31,8 +31,8 @@ public class GetArtItemService {
         getArtItemDto.setTitle(artItem.getTitle());
         getArtItemDto.setDescription(artItem.getDescription());
         getArtItemDto.setPrice(artItem.getPrice());
-        getArtItemDto.setCreate_at(artItem.getCreate_at());
-        getArtItemDto.setModify_at(artItem.getModify_at());
+        getArtItemDto.setCreate_at(artItem.getCreate_at().toString());
+        getArtItemDto.setModify_at(artItem.getModify_at().toString());
 
         return getArtItemDto;
     }

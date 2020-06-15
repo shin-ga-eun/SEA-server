@@ -1,15 +1,13 @@
 package com.bugkillers.domain.artItem.dto;
 
-import java.time.LocalDate;
-
 public class GetArtItemDto {
     private Long ano;
     private String artist;
     private String title;
     private String description;
     private int price;
-    private LocalDate create_at;
-    private LocalDate modify_at;
+    private String create_at;
+    private String modify_at;
 
     public Long getAno() {
         return ano;
@@ -51,19 +49,19 @@ public class GetArtItemDto {
         this.price = price;
     }
 
-    public LocalDate getCreate_at() {
+    public String getCreate_at() {
         return create_at;
     }
 
-    public void setCreate_at(LocalDate create_at) {
+    public void setCreate_at(String create_at) {
         this.create_at = create_at;
     }
 
-    public LocalDate getModify_at() {
+    public String getModify_at() {
         return modify_at;
     }
 
-    public void setModify_at(LocalDate modify_at) {
+    public void setModify_at(String modify_at) {
         this.modify_at = modify_at;
     }
 }
