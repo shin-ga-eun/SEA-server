@@ -12,8 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 
 @Service
 @RequiredArgsConstructor
@@ -34,8 +32,15 @@ public class LoginService {
             throw new WrongPasswordException();
         }
 
-        return LoginResponseDto.builder()
-                .JWtToken(jwtTokenProvider.createToken(member.getEmail(), member.getRole()))
-                .role(member.getRole().toString()).build();
+        LoginResponseDto loginResponseDto= new LoginResponseDto();
+        loginResponseDto.setJWtToken(jwtTokenProvider.createToken(member.getEmail(),member.getRole()));
+        loginResponseDto.setRole(member.getRole().toString());
+
+        return loginResponseDto;
+
+//
+//        return LoginResponseDto.builder()
+//                .JWtToken(jwtTokenProvider.createToken(member.getEmail(), member.getRole()))
+//                .role(member.getRole().toString()).build();
     }
 }

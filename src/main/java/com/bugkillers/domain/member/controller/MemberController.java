@@ -34,6 +34,7 @@ public class MemberController {
     @PostMapping("/login")
     public LoginResponseDto loginMember(@RequestBody MemberLoginDto memberLoginDto){
         LoginResponseDto responseDto = memberLoginService.logIn(memberLoginDto);
+        System.out.println("TOKEN: "+responseDto.getJWtToken());
         return responseDto;
     }
 
