@@ -80,7 +80,7 @@ public class JwtTokenProvider {
         return  memberRepository.findByEmail(email);
     }
 
-    // Request의 Header에서 token 값을 가져옵니다. "X-AUTH-TOKEN" : "TOKEN값'
+    // Request의 Header에서 token 값을 가져옵니다. "TOKEN" : "TOKEN값'
     public String resolveToken(HttpServletRequest request) {
 
         return request.getHeader("TOKEN");
