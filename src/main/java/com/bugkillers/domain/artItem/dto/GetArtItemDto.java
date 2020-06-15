@@ -3,12 +3,21 @@ package com.bugkillers.domain.artItem.dto;
 import java.time.LocalDate;
 
 public class GetArtItemDto {
+    private Long ano;
     private String artist;
     private String title;
     private String description;
     private int price;
     private LocalDate create_at;
     private LocalDate modify_at;
+
+    public Long getAno() {
+        return ano;
+    }
+
+    public void setAno(Long ano) {
+        this.ano = ano;
+    }
 
     public String getArtist() {
         return artist;
