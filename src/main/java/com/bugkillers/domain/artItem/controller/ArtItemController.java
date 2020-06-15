@@ -30,28 +30,28 @@ public class ArtItemController {
 
     @PostMapping("/artItem")
     public void save (@RequestHeader("token") String token, @RequestBody SaveArtItemDto saveArtItemDto) {
-//        saveArtItemService.save(saveArtItemDto);
+        saveArtItemService.save(token, saveArtItemDto);
     }
 
     @PutMapping("/artItem/{ano}")
     public void update (@RequestHeader("token") String token, @PathVariable Long ano, @RequestBody UpdateArtItemDto updateArtItemDto){
-        updateArtItemService.update(ano, updateArtItemDto);
+        updateArtItemService.update(token, ano, updateArtItemDto);
     }
 
     @DeleteMapping("/artItem/{ano}")
     public void delete (@RequestHeader("token") String token, @PathVariable Long ano){
-        deleteArtItemService.delete(ano);
+        deleteArtItemService.delete(token, ano);
     }
 
     @GetMapping("/artItem/{ano}")
-    public GetArtItemDto findByAno (@RequestHeader("token") String token, @PathVariable Long ano){
-        return getArtItemService.findByAno(ano);
+    public GetArtItemDto getArtItemByTokenAndAno (@RequestHeader("token") String token, @PathVariable Long ano){
+        return getArtItemService.getArtItemByTokenAndAno(token, ano);
     }
 
-//    @GetMapping("/artItem")
-//    public List<GetAnoAndTitleDto> getListByToken (@RequestHeader("token") String token){
-//        return getArtItemService.getListByToken(token);
-//    }
+    @GetMapping("/artItem")
+    public List<GetAnoAndTitleDto> getListByToken (@RequestHeader("token") String token){
+        return getArtItemService.getListByToken(token);
+    }
 
 
 

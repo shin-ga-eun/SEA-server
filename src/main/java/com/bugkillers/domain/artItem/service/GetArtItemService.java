@@ -18,11 +18,12 @@ import java.util.List;
 public class GetArtItemService {
 
     final ArtItemRepository artItemRepository;
-    final MemberRepository memberRepository;
     final JwtTokenProvider jwtTokenProvider;
 
-    public GetArtItemDto findByAno (Long ano){
-        ArtItem artItem = artItemRepository.findByAno(ano);
+    public GetArtItemDto getArtItemByTokenAndAno (String token, Long ano){
+        Member member = jwtTokenProvider.getUserByToken(token);
+        ArtItem artItem = artItemRepository.findByMemberAndAno(member, ano);
+
         GetArtItemDto getArtItemDto = new GetArtItemDto();
 
         getArtItemDto.setAno(ano);
@@ -35,23 +36,20 @@ public class GetArtItemService {
 
         return getArtItemDto;
     }
-//
-//    public List<GetAnoAndTitleDto> getListByToken (String token){
-//        String id  = jwtTokenProvider.getUserIdByToken(token);
-//        Member member = memberRepository.findByEmail(id);
-//        String artist = member.getName();
-//
-//        List<ArtItem> listArtItem = artItemRepository.findByArtist(artist);
-//        List<GetAnoAndTitleDto> result = new ArrayList<>();
-//
-//        for(int i=0; i< listArtItem.size(); i++) {
-//            GetAnoAndTitleDto getAnoAndTitleDto = new GetAnoAndTitleDto();
-//            getAnoAndTitleDto.setAno(listArtItem.get(i).getAno());
-//            getAnoAndTitleDto.setTitle(listArtItem.get(i).getTitle());
-//
-//            result.add(getAnoAndTitleDto);
-//        }
-//
-//        return result;
-//    }
+
+    public List<GetAnoAndTitleDto> getListByToken (String token){
+        Member member  = jwtTokenProvider.getUserByToken(token);
+        List<ArtItem> listArtItem = artItemRepository.findByMember(member);
+        List<GetAnoAndTitleDto> result = new ArrayList<>();
+
+        for(int i=0; i< listArtItem.size(); i++) {
+            GetAnoAndTitleDto getAnoAndTitleDto = new GetAnoAndTitleDto();
+            getAnoAndTitleDto.setAno(listArtItem.get(i).getAno());
+            getAnoAndTitleDto.setTitle(listArtItem.get(i).getTitle());
+
+            result.add(getAnoAndTitleDto);
+        }
+
+        return result;
+    }
 }
