@@ -1,5 +1,6 @@
 package com.bugkillers.domain.member.controller;
 
+import com.bugkillers.domain.member.dto.LoginResponseDto;
 import com.bugkillers.domain.member.dto.MemberJoinDto;
 import com.bugkillers.domain.member.dto.MemberLoginDto;
 import com.bugkillers.domain.member.entity.Member;
@@ -7,20 +8,20 @@ import com.bugkillers.domain.member.service.LoginService;
 import com.bugkillers.domain.member.service.SignUpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 
 
-@RequiredArgsConstructor
+
 @RestController
+@RequiredArgsConstructor
+@RequestMapping(value = "/sea")
 public class MemberController {
 
     private final SignUpService memberSignUpService;
     private final LoginService memberLoginService;
-
 
 
     @PostMapping("/join")
@@ -31,9 +32,9 @@ public class MemberController {
 
 
     @PostMapping("/login")
-    public String loginMember(@RequestBody MemberLoginDto memberLoginDto){
-        String JwtToken = memberLoginService.logIn(memberLoginDto);
-        return JwtToken;
+    public LoginResponseDto loginMember(@RequestBody MemberLoginDto memberLoginDto){
+        LoginResponseDto responseDto = memberLoginService.logIn(memberLoginDto);
+        return responseDto;
     }
 
     @PostMapping("/client/test")
