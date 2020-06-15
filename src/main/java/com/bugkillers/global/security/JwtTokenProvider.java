@@ -1,6 +1,8 @@
 package com.bugkillers.global.security;
 
+import com.bugkillers.domain.member.entity.Member;
 import com.bugkillers.domain.member.entity.MemberRole;
+import com.bugkillers.domain.member.repository.MemberRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -27,6 +29,7 @@ public class JwtTokenProvider {
     private long tokenValidTime = 30 * 60 * 1000L;
 
     private final UserDetailsService userDetailsService;
+    private final MemberRepository memberRepository;
 
     // 객체 초기화, secretKey를 Base64로 인코딩한다.
     @PostConstruct
@@ -49,12 +52,12 @@ public class JwtTokenProvider {
 
     // JWT 토큰에서 인증 정보 조회
     public Authentication getAuthentication(String token) {
-        UserDetails userDetails = userDetailsService.loadUserByUsername(this.getUserIdByToken(token));
+        UserDetails userDetails = userDetailsService.loadUserByUsername(this.getUserEmailByToken(token));
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
-    // 토큰에서 회원 정보 id 추출
-    public String getUserIdByToken(String token) {
+    // 토큰에서 회원 email 추출
+    public String getUserEmailByToken(String token) {
         return Jwts.parser()
                 .setSigningKey(secretKey)
                 .parseClaimsJws(token)
@@ -69,6 +72,12 @@ public class JwtTokenProvider {
                 .parseClaimsJws(token)
                 .getBody()
                 .get("roles");
+    }
+
+    //토큰으로 회원 조회
+    public Member getUserByToken(String token){
+        String email = getUserEmailByToken(token);
+        return  memberRepository.findByEmail(email);
     }
 
     // Request의 Header에서 token 값을 가져옵니다. "X-AUTH-TOKEN" : "TOKEN값'
