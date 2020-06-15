@@ -10,8 +10,8 @@ import javax.validation.constraints.Email;
 @Setter
 public class MemberJoinDto {
     private String name;
-    private String birthDay;
-    private String address;
+    private String birthday;
+    private String location;
     @Email(message = "이메일 형식에 맞게 작성하여주세요")
     private String email;
     private String password;
@@ -19,10 +19,10 @@ public class MemberJoinDto {
     private MemberRole role;
 
     @Builder
-    public MemberJoinDto(String name, String birthDay, String address, String email, String password, String phone, MemberRole role){
+    public MemberJoinDto(String name, String birthday, String location, String email, String password, String phone, MemberRole role){
         this.name=name;
-        this.birthDay=birthDay;
-        this.address=address;
+        this.birthday=birthday;
+        this.location=location;
         this.email=email;
         this.password=password;
         this.phone=phone;

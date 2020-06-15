@@ -26,7 +26,8 @@ public class SignUpService {
 
         Member savedMember = memberRepository.save(Member.builder()
                 .name(memberJoinDto.getName())
-                .birthDay(memberJoinDto.getBirthDay())
+                .birthday(memberJoinDto.getBirthday())
+                .location(memberJoinDto.getLocation())
                 .email(memberJoinDto.getEmail())
                 .password(memberJoinDto.getPassword())
                 .phone(memberJoinDto.getPhone())
