@@ -1,7 +1,7 @@
 package com.bugkillers.domain.artItem.dto;
 
 public class SaveArtItemDto {
-    private String artist; //조인해야혀
+    private String artist;
     private String title;
     private String description;
     private int price;
