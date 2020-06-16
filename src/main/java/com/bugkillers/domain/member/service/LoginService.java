@@ -32,15 +32,9 @@ public class LoginService {
             throw new WrongPasswordException();
         }
 
-        LoginResponseDto loginResponseDto= new LoginResponseDto();
-        loginResponseDto.setJWtToken(jwtTokenProvider.createToken(member.getEmail(),member.getRole()));
-        loginResponseDto.setRole(member.getRole().toString());
 
-        return loginResponseDto;
-
-//
-//        return LoginResponseDto.builder()
-//                .JWtToken(jwtTokenProvider.createToken(member.getEmail(), member.getRole()))
-//                .role(member.getRole().toString()).build();
+        return LoginResponseDto.builder()
+                .token(jwtTokenProvider.createToken(member.getEmail(),member.getRole()))
+                .role(member.getRole().toString()).build();
     }
 }
