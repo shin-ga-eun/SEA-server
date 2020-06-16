@@ -1,18 +1,9 @@
 package com.bugkillers.domain.artItem.dto;
 
 public class SaveArtItemDto {
-    private String artist; //조인해야혀
     private String title;
     private String description;
     private int price;
-
-    public String getArtist() {
-        return artist;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
 
     public String getTitle() {
         return title;

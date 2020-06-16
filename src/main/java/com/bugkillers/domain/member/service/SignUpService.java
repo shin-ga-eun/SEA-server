@@ -55,3 +55,4 @@ public class SignUpService {
                 .role(member.getRole().toString()).build();
     }
 }
+
