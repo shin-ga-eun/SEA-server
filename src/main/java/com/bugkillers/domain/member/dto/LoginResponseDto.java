@@ -2,17 +2,16 @@ package com.bugkillers.domain.member.dto;
 
 import lombok.*;
 
-
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Setter
-@NoArgsConstructor
 public class LoginResponseDto {
-    private String JWtToken;
+    private String token;
     private String role;
 
     @Builder
-    public LoginResponseDto(String JWtToken, String role){
-        this.JWtToken=JWtToken;
+    public LoginResponseDto(String token, String role){
+        this.token=token;
         this.role=role;
     }
 

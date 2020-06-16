@@ -1,5 +1,6 @@
 package com.bugkillers.domain.member.controller;
 
+import com.bugkillers.domain.member.dto.IsMemberDto;
 import com.bugkillers.domain.member.dto.LoginResponseDto;
 import com.bugkillers.domain.member.dto.MemberJoinDto;
 import com.bugkillers.domain.member.dto.MemberLoginDto;
@@ -34,8 +35,18 @@ public class MemberController {
     @PostMapping("/login")
     public LoginResponseDto loginMember(@RequestBody MemberLoginDto memberLoginDto){
         LoginResponseDto responseDto = memberLoginService.logIn(memberLoginDto);
-        System.out.println("TOKEN: "+responseDto.getJWtToken());
+        System.out.println("Token: "+responseDto.getToken());
+        System.out.println("Role: "+responseDto.getRole());
         return responseDto;
+    }
+
+    @PostMapping("/isMember")
+    public LoginResponseDto isMember(@RequestBody IsMemberDto isMemberDto){
+        System.out.println("isMemberDto"+isMemberDto.getEmail());
+        LoginResponseDto responseDtoForKakao = memberSignUpService.isMember(isMemberDto);
+        System.out.println("Role"+responseDtoForKakao.getRole());
+        System.out.println("token"+responseDtoForKakao.getToken());
+        return responseDtoForKakao;
     }
 
     @PostMapping("/client/test")

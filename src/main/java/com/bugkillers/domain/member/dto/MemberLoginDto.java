@@ -9,7 +9,6 @@ import javax.validation.constraints.Email;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberLoginDto {
 
-    @Email(message = "이메일 형식에 맞게 작성하여주세요")
     private String email;
 
     private String password;
