@@ -32,9 +32,11 @@
 
 ## 프로젝트 개발 언어 및 기술 스택
 #### 백엔드
-* SpringBoot (Java)
-* 
+* Java 
+* SpringBoot 
 
 #### 프론트엔드
-* Android (Java)
-* 
+* Java
+* Javascript
+* Android 
+* ReactJS
