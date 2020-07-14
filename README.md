@@ -40,3 +40,6 @@
 * Javascript
 * Android 
 * ReactJS
+
+#### 프로젝트 프론트엔드 
+https://github.com/Rayoungji/SEA-Android
