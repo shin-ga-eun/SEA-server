@@ -31,15 +31,10 @@
 * 협업도구 - Notion
 
 ## 프로젝트 개발 언어 및 기술 스택
-#### 백엔드
 * Java 
 * SpringBoot 
-
-#### 프론트엔드
-* Java
-* Javascript
-* Android 
-* ReactJS
+* SpringSecurity
+* JWT
 
 #### 프로젝트 프론트엔드 
 https://github.com/Rayoungji/SEA-Android
